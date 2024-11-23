@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contoh Cerpen</title>
+    <style>
+      /* Reset dan styling dasar */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        line-height: 1.6;
+        background-color: #f4f4f4;
+        color: #333;
+        overflow-x: hidden;
+        font-size: 18px;
+        scroll-behavior: smooth;
+      }
+
+      /* Styling untuk section contoh */
+      #contoh {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #ffdd00, #f9a826);
+        position: relative;
+        overflow: hidden;
+        padding: 50px 0;
+        transform: skewY(-5deg);
+        opacity: 0; /* Membuatnya tersembunyi terlebih dahulu */
+        animation: fadeIn 1s ease-in-out forwards 0.5s; /* Animasi fade-in */
+      }
+
+      /* Animasi fade-in untuk seluruh halaman */
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      .container {
+        max-width: 900px;
+        width: 100%;
+        padding: 30px;
+        z-index: 10;
+        transform: skewY(5deg);
+      }
+
+      .card {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        border-radius: 15px;
+        background: linear-gradient(135deg, #f9a826, #ffdd00);
+        box-shadow: 4px 20px 50px rgba(0, 0, 0, 0.2);
+        padding: 30px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        opacity: 0; /* Membuatnya tersembunyi terlebih dahulu */
+        animation: slideIn 1s ease-out forwards 1s; /* Animasi slide-in */
+      }
+
+      /* Animasi slide-in untuk card */
+      @keyframes slideIn {
+        0% {
+          transform: translateX(-100%);
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      .card-body {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        text-align: justify;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        color: #333;
+      }
+
+      /* Efek mengetik */
+      .typing {
+        display: block;
+        font-family: "Georgia", "Times New Roman", Times, serif;
+        font-size: 1.2rem;
+        line-height: 1.8;
+        padding: 10px;
+        color: #2c3e50;
+      }
+
+      /* Styling untuk Gelombang di Background */
+      .wave {
+        position: absolute;
+        bottom: -50px;
+        width: 200%;
+        height: 150px;
+        background: url("https://www.transparenttextures.com/patterns/wave.png")
+          repeat-x;
+        z-index: 1;
+        animation: waveAnimation 6s ease-in-out infinite;
+      }
+
+      /* Animasi Gelombang */
+      @keyframes waveAnimation {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+
+      /* Responsif */
+      @media (max-width: 768px) {
+        .card-body {
+          font-size: 1.1rem;
+        }
+
+        .container {
+          padding: 20px;
+        }
+      }
+
+      /* Styling untuk title */
+      h2.section-title {
+        text-align: center;
+        margin: 20px;
+        font-size: 3rem;
+        font-family: "Georgia", "Times New Roman", Times, serif;
+        color: #2c3e50;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Styling untuk subjudul */
+      h3 {
+        text-align: center;
+        font-size: 1.8rem;
+        font-family: "Georgia", "Times New Roman", Times, serif;
+        color: white;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* Button Styling */
+      .start-button {
+        display: block;
+        margin: 20px auto;
+        padding: 15px 35px;
+        background-color: #e74c3c;
+        color: white;
+        font-size: 1.5rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+      }
+
+      .start-button:hover {
+        background-color: #c0392b;
+        transform: scale(1.1);
+      }
+
+      .start-button:focus {
+        outline: none;
+      }
+
+      /* Animasi bounce pada tombol */
+      @keyframes bounce {
+        0% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+
+      .start-button {
+        animation: bounce 1s infinite;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Section Contoh Cerpen -->
+    <section id="contoh">
+      <div class="container">
+        <h2 class="section-title">Contoh Cerpen</h2>
+        <div class="card">
+          <div class="card-body">
+            <h3>“Lukisan Kasih Sayang Oleh: Widya Suwarna”</h3>
+            <p id="typingText" class="typing"></p>
+            <!-- Teks Cerpen akan muncul di sini -->
+          </div>
+        </div>
+        <!-- Tombol Mulai Cerpen -->
+        <button class="start-button" onclick="startTyping()">
+          Mulai Cerpen
+        </button>
+      </div>
+      <!-- Elemen Audio -->
+      <audio
+        id="backsound"
+        src="relaxing-piano-melody-248864.mp3"
+        preload="auto"
+      ></audio>
+      <!-- Gelombang di bawah -->
+      <div class="wave"></div>
+    </section>
+
+    <script>
+      // Teks cerpen "Pak Saiful dan Mumu"
+      const text = `  
+        Pak Saiful, seorang pelukis ternama, mempunyai seorang pelayan yang setia. Namanya Mumu. Biasanya setiap pagi Mumu membawakan perlengkapan melukis Pak Saiful, misalnya kanvas, cat minyak, dan kuas. Ia juga membawakan tikar kecil, air minum, dan makanan.
+
+Pak Saiful selalu melukis di tempat yang indah sekaligus mengerikan. Tempatnya di bawah sebatang pohon besar. Di sekitarnya terdapat rumput hijau dan bunga-bunga liar berwarna putih dan kuning. Kupu-kupu dan capung berkeliaran bebas di antara bunga-bunga itu.
+
+Kira-kira 15 meter ke arah selatan dari pohon itu terdapat sebuah rawa kecil yang permukaannya ditutupi oleh daun-daun teratai. Bunga-bunga teratai yang berwarna merah jambu menghiasi permukaan rawa itu. Namun, lumpur rawa itu selalu menelan benda apa saja yang terjatuh ke dalamnya, termasuk manusia.
+
+Suatu hari Pak Saiful baru saja menyelesaikan lukisannya yang sangat indah. Lukisan seorang anak kecil yang sedang menggendong dan membelai anjing kecil berbulu coklat. Siapa pun yang melihat lukisan itu pasti merasa tersentuh. Anak itu menyayangi anjingnya dan anjing kecil itu pun terlihat senang dalam pelukan si anak.
+
+“Mumu, coba ke sini dan lihat lukisanku!” kata Pak Saiful bangga.
+
+“Luar biasa, Pak, sangat indah! Pasti laku dengan harga mahal,” ujar Mumu.
+
+Kemudian Mumu kembali ke bawah pohon dan menyiapkan makanan dan minuman. Sementara itu Pak Saiful mundur beberapa langkah untuk memandang lukisannya lagi. Oh, semakin jauh jaraknya, lukisan itu semakin indah terlihat. Pak Saiful mundur beberapa langkah lagi dan memandang lukisannya kembali. Rupanya ia tak sadar bahwa ia tepat berada di tepi rawa.
+
+Sementara itu Mumu melihat majikannya yang sudah berada di tepi rawa. Alangkah berbahayanya. Bila Pak Saiful mundur selangkah lagi, pasti ia terjatuh ke dalam rawa. Mumu mendekati lukisan di bawah pohon dan mengangkat lukisan itu dari tempatnya.
+
+Pak Saiful berlari ke dekat pohon dan berkata dengan marah, “Apa-apaan kamu ini, Mu. Berani-beraninya kamu mau merusak lukisanku, atau mau mencurinya?!”
+
+“Maaf, Pak, maksud saya…!” jawab Mumu.
+
+Namun Pak Saiful tidak mau mendengar penjelasan Mumu.
+
+“Pergi kau dari sini. Aku tidak memerlukan pelayan yang kurang ajar!” seru Pak Saiful dengan wajah merah padam.
+
+Terpaksa Mumu pergi. Pak Saiful membereskan alat-alatnya dan membawa perlengkapannya pulang. Uuuh, rupanya berat juga.
+
+Esok paginya Pak Saiful membawa lagi lukisannya ke bawah pohon besar. Karena belum puas memandang, hari ini ia akan memandang sepuas-puasnya tanpa diganggu oleh Mumu.
+
+Mula-mula Pak Saiful memandang lukisannya dari dekat, kemudian ia memperpanjang jaraknya. Akhirnya ia sudah mendekati tepi rawa. Ia tak tahu di balik pohon besar ada sepasang mata mengawasinya.
+
+“Karya hebat. Aku sendiri pun hampir meneteskan air mata memandang lukisan itu. Orang akan tergugah untuk menyayangi binatang. Dan mereka akan berpikir bahwa kasih sayang itu sesuatu yang amat penting dan berharga!” pikir Pak Saiful. Tanpa sadar Pak Saiful mundur lagi dan… oooh… ia terperosok ke dalam rawa.
+
+“Tolooong… tolooong!” jerit Pak Saiful dengan panik. Ia sadar bahwa dirinya akan terhisap ke dalam lumpur rawa dan maut akan segera menjemputnya. Saat itulah Mumu muncul sambil membawa tambang. Ia sudah mengikatkan tambang di sebuah pohon besar dekat rawa.
+
+“Pegang tambang ini, Pak!” kata Mumu sambil mengulurkan tambang. Lalu Mumu cepat-cepat menarik tambang sekuat tenaga, menarik Pak Saiful dari rawa. Keringat bercucuran di wajah Mumu, namun akhirnya ia berhasil menyeret majikannya keluar dari rawa. Begitu tiba di rerumputan, Pak Saiful pingsan.
+
+Ketika sadar, ia sudah berada di rumahnya dalam keadaan bersih, Mumu sudah mengurus segala sesuatunya dengan baik.
+
+“Terima kasih, Mumu, kamu menyelamatkan nyawaku!” kata Pak Saiful. “Maafkan aku!”
+
+“Tidak apa-apa, Pak. Saya senang Bapak selamat. Saya mengangkat lukisan Bapak kemarin karena saya ingin menarik perhatian Bapak. Bapak sudah berada di tepi rawa waktu itu. Saya kuatir Bapak akan jatuh. Tadi saya berjaga-jaga dan menyiapkan tambang karena saya kuatir Bapak asyik memandang lukisan dan terperosok ke dalam rawa!” kata Mumu.
+
+Mumu, si pelayan setia mendapat hadiah dan kembali bekerja pada Pak Saiful. Kasih sayang seorang anak pada anjingnya, kasih sayang seorang pelayan pada majikannya membuat Pak Saiful makin menyadari arti kasih sayang. Dan sebagai rasa syukur, Pak Saiful memberikan hasil penjualan lukisan itu pada panti asuhan.
+
+`;
+
+      const typingText = document.getElementById("typingText");
+      let index = 0;
+
+      // Fungsi mengetik efek
+      function typeWriter() {
+        if (index < text.length) {
+          typingText.textContent += text.charAt(index);
+          index++;
+          setTimeout(typeWriter, 35); // Kecepatan mengetik (ms)
+        }
+      }
+
+      function startTyping() {
+        typeWriter();
+        document.querySelector(".start-button").style.display = "none"; // Menyembunyikan tombol setelah diklik
+        document.querySelector("#backsound").play(); // Putar musik latar
+      }
+    </script>
+  </body>
+</html>
